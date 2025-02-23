@@ -2,100 +2,123 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100dvh;
-    overflow: hidden;
+    min-height: 90dvh;
     margin: 0;
-    background-color: #121212;
+    background: #121212;
     color: white;
-    font-family: Arial, sans-serif;
-    font-size: 5rem;
+    font-family: 'JetBrains Mono', monospace;
     flex-direction: column;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background 0.3s, color 0.3s;
     position: relative;
-    text-align: center; /* Center text by default */
+    text-align: center;
+    overflow: hidden;
 }
 
-.markdown-content {
-    background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
-    transition: background-color 0.3s, color 0.3s;
-    max-width: 90%; /* Limit width for better readability on smaller screens */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
+.main-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
+
+.main-text div:first-child { 
+    font-size: 7rem;
+    line-height: 1;
+    margin-bottom: -10px;
+}
+
+.main-text div:last-child { 
+    font-size: 5rem;
+    line-height: 1;
+}
+
+.main-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
 
 .toggle-button {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     color: white;
-    position: absolute;
-    top: 10px;
-    right: 20px;
+    position: fixed;
+    top: 1.2rem;
+    right: 1.2rem;
+    z-index: 10;
+    padding: 0.5rem;
 }
 
 .social-links {
-    position: absolute;
-    bottom: 10px;
+    position: fixed;
+    bottom: 12px;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.1rem;
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap; /* Allow links to wrap to the next line on smaller screens */
+    gap: 18px;
+    flex-wrap: wrap;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
 }
 
 .social-links a {
     color: white;
     text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .light-mode {
-    background-color: white;
+    background: white;
     color: black;
 }
 
 .light-mode .markdown-content {
-    background-color: #f0f0f0;
+    background: #f0f0f0;
     color: black;
 }
 
 .light-mode .social-links a {
     color: black;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    body {
-        font-size: 3rem; /* Reduce font size on smaller screens */
-        padding: 20px; /* Add some padding to the body on smaller screens */
-        box-sizing: border-box;
-    }
-
-    .toggle-button {
-        top: 5px;
-        right: 10px;
-        font-size: 1.2rem;
-    }
-
-    .social-links {
-        font-size: 0.9rem;
-        gap: 10px;
-    }
-
-    .markdown-content {
-        padding: 15px;
-    }
+    .main-text div:first-child { font-size: 5rem; }
+    .main-text div:last-child { font-size: 3.5rem; }
+    body { font-size: 2rem; padding: 10px; }
+    .toggle-button { font-size: 1.2rem; }
+    .social-links { font-size: 0.9rem; gap: 12px; }
+    .social-links a { padding: 5px 10px; }
 }
 
 @media (max-width: 480px) {
-    body {
-        font-size: 2rem;
-    }
+    .main-text div:first-child { font-size: 4rem; }
+    .main-text div:last-child { font-size: 2.5rem; }
+    body { font-size: 1.8rem; }
+    .social-links { font-size: 0.8rem; gap: 10px; }
+    .social-links a { padding: 4px 8px; }
+}
 
-    .social-links {
-        font-size: 0.8rem;
-    }
+@media (max-width: 320px) {
+    .main-text div:first-child { font-size: 3.5rem; }
+    .main-text div:last-child { font-size: 2rem; }
+    body { font-size: 1.5rem; }
+    .social-links { font-size: 0.7rem; gap: 8px; }
+    .social-links a { padding: 3px 6px; }
 }

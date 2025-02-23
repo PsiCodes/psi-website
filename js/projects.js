@@ -1,25 +1,27 @@
-// Projects
+document.addEventListener("DOMContentLoaded", () => {
+    const projects = ["ktxpy", "zen-app"];
+    const projectsContainer = document.getElementById("projectsContainer");
+    const button = document.getElementById("modeButton");
+    const body = document.body;
 
-
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("../markdown/projects.md")
-        .then(response => response.text())
-        .then(text => {
-            document.getElementById("content").innerHTML = marked.parse(text);
-        })
-        .catch(error => console.error("Error loading markdown:", error));
-
-
-    document.getElementById("modeButton").addEventListener("click", function () {
-        const body = document.body;
-        const content = document.getElementById("content");
-        const button = document.getElementById("modeButton");
-        if (body.classList.contains("light-mode")) {
-            body.classList.remove("light-mode");
-            button.textContent = "🌙";
-        } else {
-            body.classList.add("light-mode");
-            button.textContent = "☀️";
-        }
+    projects.forEach(project => {
+        const projectDiv = document.createElement("div");
+        projectDiv.id = project;
+        projectDiv.classList.add("markdown-content");
+        projectsContainer.appendChild(projectDiv);
+        
+        fetch(`../markdown/${project}.md`)
+            .then(response => response.text())
+            .then(text => projectDiv.innerHTML = marked.parse(text))
+            .catch(error => console.error(`Error loading markdown file '${project}':`, error));
     });
+
+    const setMode = (isLight) => {
+        body.classList.toggle("light-mode", isLight);
+        button.textContent = isLight ? "☀️" : "🌙";
+        localStorage.setItem("mode", isLight ? "light" : "dark");
+    };
+
+    setMode(localStorage.getItem("mode") === "light");
+    button.addEventListener("click", () => setMode(!body.classList.contains("light-mode")));
 });

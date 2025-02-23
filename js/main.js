@@ -1,16 +1,14 @@
-// Main.js
-
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("modeButton").addEventListener("click", function () {
-        const body = document.body;
-        const button = document.getElementById("modeButton");
-        if (body.classList.contains("light-mode")) {
-            body.classList.remove("light-mode");
-            button.textContent = "🌙";
-        } else {
-            body.classList.add("light-mode");
-            button.textContent = "☀️";
-        }
-    });
+document.addEventListener("DOMContentLoaded", () => {
+    const body = document.body;
+    const button = document.getElementById("modeButton");
+    
+    const setMode = (isLight) => {
+        body.classList.toggle("light-mode", isLight);
+        button.textContent = isLight ? "☀️" : "🌙";
+        localStorage.setItem("mode", isLight ? "light" : "dark");
+    };
+    
+    setMode(localStorage.getItem("mode") === "light");
+    
+    button.addEventListener("click", () => setMode(!body.classList.contains("light-mode")));
 });
-
