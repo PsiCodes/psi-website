@@ -2,7 +2,7 @@
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("https://raw.githubusercontent.com/PsiCodes/psi-website/refs/heads/main/markdown/projects.md")
+    fetch("../markdown/projects.md")
         .then(response => response.text())
         .then(text => {
             document.getElementById("content").innerHTML = marked.parse(text);
