@@ -12,3 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
     button.addEventListener("click", () => setMode(!body.classList.contains("light-mode")));
 });
+
+window.onpageshow = function (event) {
+    if (event.persisted) {
+      window.location.reload();
+    }
+};

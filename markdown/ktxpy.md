@@ -12,4 +12,4 @@ updated : yes
 
 <img src="https://img.shields.io/github/v/release/PsiCodes/KtxPy?include_prereleases&amp;label=latest%20release" alt="Latest release">
 
-github : [here]("https://github.com/PsiCodes/ktxpy")
+github : [here](https://github.com/PsiCodes/ktxpy)
