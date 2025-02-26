@@ -7,14 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
         button.textContent = isLight ? "☀️" : "🌙";
         localStorage.setItem("mode", isLight ? "light" : "dark");
     };
-    
     setMode(localStorage.getItem("mode") === "light");
-    
     button.addEventListener("click", () => setMode(!body.classList.contains("light-mode")));
 });
-
-window.onpageshow = function (event) {
-    if (event.persisted) {
-      window.location.reload();
-    }
-};
